@@ -20,8 +20,8 @@ public class BookBean implements Serializable {
         if (term == null) {
             return em.createQuery("select b from Book b", BookEntity.class).getResultList();
         } else {
-            return em.createQuery("select b from Book b where b.title like :term", BookEntity.class)
-                    .setParameter("term", "%"+term+"%")
+            return em.createQuery("select b from Book b where lower(b.title) like :term", BookEntity.class)
+                    .setParameter("term", "%" + term.toLowerCase() + "%")
                     .getResultList();
         }
     }
