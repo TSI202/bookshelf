@@ -17,7 +17,13 @@ public class BookBean implements Serializable {
     private String term;
 
     public List<BookEntity> getBooks() {
-        return em.createQuery("select b from Book b", BookEntity.class).getResultList();
+        if (term == null) {
+            return em.createQuery("select b from Book b", BookEntity.class).getResultList();
+        } else {
+            return em.createQuery("select b from Book b where b.title like :term", BookEntity.class)
+                    .setParameter("term", "%"+term+"%")
+                    .getResultList();
+        }
     }
 
     public String getTerm() {
