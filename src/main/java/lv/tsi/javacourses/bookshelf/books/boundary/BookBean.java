@@ -12,12 +12,19 @@ import java.util.List;
 @Named
 @SessionScoped
 public class BookBean implements Serializable {
-
     @PersistenceContext
     private EntityManager em;
+    private String term;
 
     public List<BookEntity> getBooks() {
         return em.createQuery("select b from Book b", BookEntity.class).getResultList();
     }
 
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
+    }
 }
