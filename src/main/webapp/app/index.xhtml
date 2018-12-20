@@ -12,7 +12,9 @@
 <ui:composition template="/templates/main.xhtml">
     <ui:define name="content">
 
-
+        <ui:repeat value="#{bookBean.books}" var="book">
+            <p>#{book.id} - #{book.title}</p>
+        </ui:repeat>
 
     </ui:define>
 </ui:composition>
