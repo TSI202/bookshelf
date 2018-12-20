@@ -12,10 +12,15 @@
 <ui:composition template="/templates/main.xhtml">
     <ui:define name="content">
 
+        <h:form>
+
+            <h:inputText value="#{bookBean.term}"/>
+            <h:commandButton value="Search" action="#{bookBean.doSearch}"/>
+
         <ui:repeat value="#{bookBean.books}" var="book">
             <p>#{book.id} - #{book.title} - #{book.author}</p>
         </ui:repeat>
-
+        </h:form>
     </ui:define>
 </ui:composition>
 

@@ -27,4 +27,8 @@ public class BookBean implements Serializable {
     public void setTerm(String term) {
         this.term = term;
     }
+
+    public void doSearch() {
+        System.out.println("Searching");
+    }
 }
