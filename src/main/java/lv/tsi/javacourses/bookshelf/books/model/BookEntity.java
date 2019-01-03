@@ -1,7 +1,10 @@
 package lv.tsi.javacourses.bookshelf.books.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity(name = "Book")
@@ -10,15 +13,23 @@ public class BookEntity implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
-    @NotEmpty
+    @NotEmpty(message = "Title shouldn't be empty")
+    @Size(max = 200)
     @Column(name="title", length = 200, nullable = false)
     private String title;
+    @NotEmpty
+    @Size(min=10, max = 50)
     @Column(name="isbn", length = 50, nullable = false, unique = true)
     private String isbn;
+    @NotEmpty
+    @Size(max = 200)
     @Column(name="author", length = 200, nullable = false)
     private String author;
+    @Min(value=1)
+    @NotNull
     @Column(name="year", nullable = false)
     private int year;
+    @Size(max = 1000)
     @Column(name="description", length = 1000)
     private String description;
 
