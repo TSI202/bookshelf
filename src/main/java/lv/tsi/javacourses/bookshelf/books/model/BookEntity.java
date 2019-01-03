@@ -1,6 +1,7 @@
 package lv.tsi.javacourses.bookshelf.books.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 @Entity(name = "Book")
@@ -9,6 +10,7 @@ public class BookEntity implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
+    @NotEmpty
     @Column(name="title", length = 200, nullable = false)
     private String title;
     @Column(name="isbn", length = 50, nullable = false, unique = true)

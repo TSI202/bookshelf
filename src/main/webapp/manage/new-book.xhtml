@@ -1,0 +1,45 @@
+<!--
+  ~ Copyright (c) 2018 Dimitrijs Fedotovs
+  ~ This code is licensed under MIT license
+  ~ (see LICENSE.txt for details)
+  -->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/templates/main.xhtml">
+    <ui:define name="content">
+
+        <h:form id="new-book-form">
+            <p>
+                <h:outputLabel value="Title:"/>
+                <h:inputText value="#{createBookBean.book.title}"/>
+            </p>
+            <p>
+                <h:outputLabel value="Author:"/>
+                <h:inputText value="#{createBookBean.book.author}"/>
+            </p>
+            <p>
+                <h:outputLabel value="ISBN:"/>
+                <h:inputText value="#{createBookBean.book.isbn}"/>
+            </p>
+            <p>
+                <h:outputLabel value="Year:"/>
+                <h:inputText id="year" value="#{createBookBean.book.year}"/>
+            </p>
+            <p>
+                <h:outputLabel value="Description:"/>
+                <h:inputText value="#{createBookBean.book.description}"/>
+            </p>
+            <p>
+                <h:commandButton action="#{createBookBean.createBook}"
+                                 value="Create"/>
+            </p>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+
+</html>
