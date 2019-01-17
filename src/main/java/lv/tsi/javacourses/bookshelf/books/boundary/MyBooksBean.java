@@ -22,7 +22,7 @@ public class MyBooksBean implements Serializable {
     private CurrentUser currentUser;
     private List<ReservationEntity> availableResult;
     private List<ReservationEntity> inQueueResult;
-    
+
 
     public void prepare() {
         availableResult = new ArrayList<>();
