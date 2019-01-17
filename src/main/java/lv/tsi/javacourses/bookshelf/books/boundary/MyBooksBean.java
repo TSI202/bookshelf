@@ -20,9 +20,13 @@ public class MyBooksBean implements Serializable {
     private EntityManager em;
     @Inject
     private CurrentUser currentUser;
+    private List<ReservationEntity> availableResult;
+    private List<ReservationEntity> inQueueResult;
+    
 
-    public List<ReservationEntity> getAvailableBooks() {
-        List<ReservationEntity> result = new ArrayList<>();
+    public void prepare() {
+        availableResult = new ArrayList<>();
+        inQueueResult = new ArrayList<>();
         List<ReservationEntity> userReservations = em.createQuery(
                 "select r from Reservation r " +
                         "where r.user = :user and r.status = 'ACTIVE'", ReservationEntity.class)
@@ -39,10 +43,18 @@ public class MyBooksBean implements Serializable {
                     .getResultStream()
                     .findFirst();
             if (firstReservation.isEmpty() || firstReservation.get().getId().equals(reservationId)) {
-                result.add(r);
+                availableResult.add(r);
+            } else {
+                inQueueResult.add(r);
             }
         }
+    }
 
-        return result;
+    public List<ReservationEntity> getAvailableBooks() {
+        return availableResult;
+    }
+
+    public List<ReservationEntity> getInQueueBooks() {
+        return inQueueResult;
     }
 }
