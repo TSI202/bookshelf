@@ -21,7 +21,7 @@ public class MyBooksBean implements Serializable {
     @Inject
     private CurrentUser currentUser;
 
-    private List<ReservationEntity> getAvailableBooks() {
+    public List<ReservationEntity> getAvailableBooks() {
         List<ReservationEntity> result = new ArrayList<>();
         List<ReservationEntity> userReservations = em.createQuery(
                 "select r from Reservation r " +
@@ -42,7 +42,7 @@ public class MyBooksBean implements Serializable {
                 result.add(r);
             }
         }
-        
+
         return result;
     }
 }
