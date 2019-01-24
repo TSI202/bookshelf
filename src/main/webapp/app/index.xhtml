@@ -23,7 +23,8 @@
             <h:outputLabel value="Not found"
                            rendered="#{empty booksListBean.books}"/>
             <h:dataTable value="#{booksListBean.books}" var="book"
-                         rendered="#{not empty booksListBean.books}">
+                         rendered="#{not empty booksListBean.books}"
+                         styleClass="w3-table w3-table-all">
                 <h:column>
                     <f:facet name="header">Id</f:facet>
                     #{book.id}

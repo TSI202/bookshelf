@@ -17,7 +17,8 @@
 
         <h2>Available books</h2>
         <h:dataTable value="#{myBooksBean.availableBooks}"
-                     var="res">
+                     var="res"
+                     styleClass="w3-table w3-table-all">
             <h:column>
                 <f:facet name="header">Id</f:facet>
                 #{res.id}
@@ -38,7 +39,8 @@
 
         <h2>Wait list</h2>
         <h:dataTable value="#{myBooksBean.inQueueBooks}"
-                     var="res">
+                     var="res"
+                     styleClass="w3-table w3-table-all">
             <h:column>
                 <f:facet name="header">Id</f:facet>
                 #{res.id}
@@ -59,7 +61,8 @@
 
         <h2>Taken list</h2>
         <h:dataTable value="#{myBooksBean.takenBooks}"
-                     var="res">
+                     var="res"
+                     styleClass="w3-table w3-table-all">
             <h:column>
                 <f:facet name="header">Id</f:facet>
                 #{res.id}
